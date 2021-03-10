@@ -1,0 +1,35 @@
+<!--
+  @description       : 
+  @author            : Vrushabh Uprikar
+  @group             : 
+  @last modified on  : 03-10-2021
+  @last modified by  : Vrushabh Uprikar
+  Modifications Log 
+  Ver   Date         Author             Modification
+  1.0   03-02-2021   Vrushabh Uprikar   Initial Version
+-->
+<template>
+    <lightning-card  variant="Narrow"  title="Timer" icon-name="standard:operating_hours">
+        <div class="slds-grid slds-gutters slds-m-around_xx-small">
+            <div class="slds-form-element slds-col">
+                <div class="slds-form-element__control">
+                    <lightning-input type="date" name="date" onchange={getDate} label="Enter Date"></lightning-input>
+                </div>
+            </div>
+            <div class="slds-form-element slds-col">
+                <div class="slds-form-element__control">
+                    <lightning-input type="time" name="time" onchange={getTime} label="Enter Time"></lightning-input>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters slds-m-around_xx-small slds-align_absolute-center">
+            <div class="slds-form-element slds-col">
+                <button class="slds-button slds-button_success" onclick={handleSubmit}>Submit</button>
+            </div>
+        </div>
+        
+            <div>
+                <label class="slds-form-element__label" >{showtimedata}</label> 
+            </div>
+    </lightning-card>
+</template>
