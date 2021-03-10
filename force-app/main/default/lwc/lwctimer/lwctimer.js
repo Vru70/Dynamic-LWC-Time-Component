@@ -2,38 +2,21 @@
  * @description       : 
  * @author            : Vrushabh Uprikar
  * @group             : 
- * @last modified on  : 03-03-2021
+ * @last modified on  : 03-10-2021
  * @last modified by  : Vrushabh Uprikar
  * Modifications Log 
  * Ver   Date         Author             Modification
  * 1.0   03-02-2021   Vrushabh Uprikar   Initial Version
 **/
-import { api, LightningElement, track } from 'lwc';
+import { api, LightningElement } from 'lwc';
 
 export default class Lwctimer extends LightningElement 
 {
-
-    vardate;
-    vartime;
-    @track showtime;
-    timeInstance;
-    @track showtimedata;
     
-    // myVar;
-
-    getDate(event)                                                    
-    {
-        this.vardate = event.target.value;        
-    }
-
-    getTime(event)                                                   
-    {
-        this.vartime = event.target.value;        
-    }
-
-    
-        
-    handleSubmit(event)
+@api recordId;
+      
+   /**
+    *  handleSubmit(event)
     {   
         window.console.log('calling setinterval');
         window.console.log('Time :'+this.vartime); //04:00:00.000
@@ -75,6 +58,8 @@ export default class Lwctimer extends LightningElement
         
       
     }
+    
+    */
 
 
     
