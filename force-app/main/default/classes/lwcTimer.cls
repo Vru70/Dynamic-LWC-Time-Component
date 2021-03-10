@@ -8,7 +8,7 @@
 **/
 public with sharing class lwcTimer 
 {
-    public static void getOppData(Id recId)
+    public static String getOppData(Id recId)
     {
         // validate input
         System.assert(recId != null);
@@ -18,15 +18,16 @@ public with sharing class lwcTimer
         System.debug('objType'+objType);
         try 
         {
-            String query = 'SELECT Expiry_Date__c FROM '+objType+' WHERE Id='+recId+' Limit 1';
+            String query = 'SELECT Expiry_Date__c FROM '+ objType +' WHERE Id=' + '\'' + recId + '\'' + ' Limit 1';
             SObject records = Database.query( query );
-            System.debug('records'+records);
+            String str = JSON.serialize(records);
+            return str;
 
         } catch(Exception e) 
         {
             System.debug(e);
+            return 'Error';
         }
         
-      //  return objType;
     }
 }
