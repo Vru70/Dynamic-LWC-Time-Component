@@ -2,18 +2,41 @@
  * @description       : 
  * @author            : Vrushabh Uprikar
  * @group             : 
- * @last modified on  : 03-10-2021
+ * @last modified on  : 03-11-2021
  * @last modified by  : Vrushabh Uprikar
  * Modifications Log 
  * Ver   Date         Author             Modification
  * 1.0   03-02-2021   Vrushabh Uprikar   Initial Version
 **/
-import { api, LightningElement } from 'lwc';
+import { api, LightningElement ,wire} from 'lwc';
+import getOppData from '@salesforce/apex/lwcTimer.getOppData';
 
 export default class Lwctimer extends LightningElement 
 {
-    
+
 @api recordId;
+error;
+jsonData;
+@wire(getOppData, { recordId: '$recordId' })
+    wiredRecordsMethod({ error, data })
+    {
+        if(data) 
+        {
+            console.log('data: ', data);
+            this.jsonData = data;
+            console.log('this.jsonData: ', this.jsonData);
+            this.error = undefined;
+            console.log('this.error: ', this.error);
+        } else if(error) 
+        {
+            console.log('error ', error);
+            this.error = error;
+            console.log('this.error: ', this.error);
+            this.jsonData = undefined;
+            console.log('this.contacts : ', this.jsonData);
+        }
+        
+    }
       
    /**
     *  handleSubmit(event)
