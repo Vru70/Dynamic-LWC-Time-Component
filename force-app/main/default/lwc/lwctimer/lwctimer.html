@@ -11,13 +11,14 @@
 <template>
     <lightning-card  variant="Narrow"  title="Timer LWC" icon-name="standard:operating_hours">
       <div class="slds-m-around_medium">
-        <template if:true={jsonData}>
-          Data:  {jsonData}
-          Recordid :{recordId}
-        </template>
-        <template if:true={error}>
-            <c-error-panel errors={error}></c-error-panel>
-        </template>
+       
+          Data :  {jsonData} <br />
+          Recordid : {recordId} <br />
+          jsonData : {jsonData} <br />
+          showtimedata : {showtimedata} <br />
+          showtime : {showtime} <br />
+          errors : {error}
+        
     </div>
     </lightning-card>
 </template>
