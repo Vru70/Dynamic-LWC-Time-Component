@@ -15,7 +15,7 @@ export default class Lwctimer extends LightningElement
     @api recordId;
     error;
     jsonData;
-    @track showtimedata =" ";
+    showtimedata =" ";
     showtime;
     @wire(getOppData, { recId: '$recordId' })
     wiredRecordsMethod({ error, data }) 
@@ -78,7 +78,9 @@ export default class Lwctimer extends LightningElement
             this.jsonData = undefined;
             console.log('this.jsonData : ', this.jsonData);
         }
+       
 
     }
+    
 
 }
