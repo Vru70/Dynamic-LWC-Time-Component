@@ -8,6 +8,7 @@
 **/
 public with sharing class lwcTimer 
 {
+    @AuraEnabled(cacheable=true)
     public static String getOppData(Id recId)
     {
         // validate input
