@@ -1,7 +1,7 @@
 /**
  * @author            : Vrushabh Uprikar
  * @group             : 
- * @last modified on  : 03-11-2021
+ * @last modified on  : 03-12-2021
  * @last modified by  : Vrushabh Uprikar
  * Ver   Date         Author             Modification
  * 1.0   03-02-2021   Vrushabh Uprikar   Initial Version
@@ -15,17 +15,18 @@ export default class Lwctimer extends LightningElement
     @api recordId;
     error;
     jsonData;
-    showtimedata =" ";
-    showtime;
+    @track showtimedata =" ";
+
+
+    
     @wire(getOppData, { recId: '$recordId' })
     wiredRecordsMethod({ error, data }) 
     {
-        if (data) 
+        if(data) 
         {
-            console.log('data: ', data);
+            // getting data
             this.jsonData = data;
             this.error = undefined;
-            console.log('this.error: ', this.error);
 
             // Slpiting data to get time
 
@@ -36,12 +37,11 @@ export default class Lwctimer extends LightningElement
             var time = timelong.slice(11, -5);
             console.log('time:', time);
             var endtime = date.toString() + ' ' + time.toString();
-            var qw = new Date();
-            console.log('qw:', qw);
             var total = Date.parse(endtime) - Date.parse(new Date()); // getting total milisec
+            total = total + 19800000;
+            let myparam = this;
             if (total < 0) 
             {
-                this.showtime = false;
                 window.clearInterval(this.timeInstance);
                 this.showtimedata= 'Expired';
             }
@@ -63,7 +63,7 @@ export default class Lwctimer extends LightningElement
                     // output the result
                     var xy = days.toLocaleString() + ' Days : ' + hours.toLocaleString() + ' Hours : ' + minutes.toLocaleString() + ' Minutes : ' + seconds.toLocaleString() + ' Seconds';
                     
-                    this.showtimedata = xy;
+                    myparam.showtimedata = xy;
                     window.console.log('this.showtimedata ' + this.showtimedata);
                     total = total - 1000;
 
