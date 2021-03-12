@@ -2,19 +2,34 @@
   @description       : 
   @author            : Vrushabh Uprikar
   @group             : 
-  @last modified on  : 03-11-2021
+  @last modified on  : 03-12-2021
   @last modified by  : Vrushabh Uprikar
   Modifications Log 
   Ver   Date         Author             Modification
   1.0   03-02-2021   Vrushabh Uprikar   Initial Version
 -->
 <template>
-    <lightning-card  variant="Narrow"  title="Timer LWC" icon-name="standard:operating_hours">
+  <lightning-card variant="Narrow" title="Timer LWC" icon-name="standard:operating_hours">
+    <template if:false={exp}>
       <div class="slds-m-around_medium">
-          Recordid : {recordId} <br />
-          showtimedata : {showtimedata} <br />
-          showtime : {showtime} <br />
-          errors : {error}
-    </div>
-    </lightning-card>
+        
+        <div style="background: white;padding: 20px;border-radius: 6px;">
+          <div style="font-size: 20px;text-align:center;">This Opportunity will expired in <br />
+            <strong>
+              {showtimedata}
+            </strong> </div>
+        </div>
+      </div>
+    </template>
+
+      <template if:true={exp}>
+        <div class="slds-m-around_medium">
+          <div style="background: white;padding: 20px;border-radius: 6px;">
+            <div style="font-size: 30px;text-align:center;" class="slds-text-color_error">
+              <strong>{showtimedata}</strong>
+            </div>
+          </div>
+        </div>
+    </template>
+  </lightning-card>
 </template>
